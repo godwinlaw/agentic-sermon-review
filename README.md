@@ -1,6 +1,6 @@
 # Agentic Sermon Review
 
-An AI-powered tool for analyzing teaching scripts and sermon transcripts using specialized AI agents.
+An AI-powered tool for analyzing teaching scripts and sermon transcripts using specialized AI agents. Powered by Claude Code.
 
 ## Table of Contents
 
