@@ -2,11 +2,49 @@
 
 An AI-powered tool for analyzing teaching scripts and sermon transcripts using specialized AI agents.
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Why Use Local Agents vs. Chat Apps?](#why-use-local-agents-vs-chat-apps)
+- [Available Agents](#available-agents)
+- [Available Commands](#available-commands)
+  - [review-transcript](#review-transcript)
+- [Setup](#setup)
+  - [Installing Claude Code](#installing-claude-code)
+  - [Authentication Options](#authentication-options)
+- [Getting Started](#getting-started)
+  - [Using in This Project](#using-in-this-project)
+  - [Copying to Other Projects](#copying-to-other-projects)
+  - [Copying to Global Configuration](#copying-to-global-configuration)
+  - [Configuration Locations](#configuration-locations)
+  - [Setting Up Docker MCP Toolkit (Optional)](#setting-up-docker-mcp-toolkit-optional)
+  - [Official Documentation](#official-documentation)
+
 ## Overview
 
 This project provides a comprehensive framework for reviewing and improving teaching content through multiple AI-powered analysis agents. Each agent specializes in a different aspect of communication analysis, providing detailed feedback on effectiveness, clarity, engagement, and theological accuracy.
 
 <img width="801" height="499" alt="agentic-sermon-review" src="https://github.com/user-attachments/assets/4f0a6262-f54d-4284-b4f6-183fefe41ec2" />
+
+## Why Use Local Agents vs. Chat Apps?
+
+When analyzing long transcripts, uploading them to chat applications like ChatGPT or Google AI Studio presents significant limitations:
+
+**Context Window Constraints**: Chat apps use a single shared context window for the entire conversation. A 10,000-word transcript might consume 80%+ of the available context, leaving minimal room for detailed analysis, multiple perspectives, or iterative improvements.
+
+**Agentic Sermon Review solves this through specialized Claude Code agents:**
+
+- **Independent context windows** - Each agent runs with its own dedicated context window, not competing for space
+- **Parallel processing** - Multiple agents analyze the same transcript simultaneously without context dilution
+- **Specialized depth** - Each agent can deeply analyze one dimension (rhetoric, grammar, humor, theology) with full context awareness
+- **Comprehensive coverage** - Run 10+ specialized analyses on the same transcript, each with complete access to the full content
+
+**Example**: For a 15,000-word sermon transcript:
+- *Chat app approach*: Transcript uses ~80% of context → limited analysis depth
+- *Local agents approach*: Each of 12 agents gets a fresh context window → comprehensive multi-dimensional analysis
+
+**Learn more**: [Claude Code Agents Documentation](https://code.claude.com/docs/en/agents.md)
+>>>>>>> df3c207 (Readme updates)
 
 ## Available Agents
 
