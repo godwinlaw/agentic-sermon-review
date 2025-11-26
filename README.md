@@ -127,18 +127,58 @@ Claude Code requires authentication through one of these methods:
 - **Claude Subscription** - Subscribe to Claude Pro or Max at [claude.ai](https://claude.ai)
 - **Enterprise Options** - Amazon Bedrock, Google Vertex AI, or Microsoft Foundry (see [Enterprise Authentication Guide](https://code.claude.com/docs/en/iam.md))
 
+## Getting Started
+
+### Using in This Project
+
+1. Clone this repository and navigate to the project directory
+2. Ensure Claude Code is installed and authenticated
+3. Start Claude Code:
+   ```bash
+   claude
+   ```
+4. The agents and commands are automatically available when running Claude Code from this directory
+
+### Copying to Other Projects
+
+To use these agents and commands in a different project:
+
+```bash
+# Navigate to your target project
+cd /path/to/your/project
+
+# Create .claude directory structure
+mkdir -p .claude/agents .claude/commands
+
+# Copy agents and commands
+cp /path/to/agentic-sermon-review/agents/*.md .claude/agents/
+cp /path/to/agentic-sermon-review/commands/*.md .claude/commands/
+```
+
+### Copying to Global Configuration
+
+To make these agents and commands available across all your projects:
+
+```bash
+# Copy agents to global configuration
+cp /path/to/agentic-sermon-review/agents/*.md ~/.claude/agents/
+
+# Copy commands to global configuration
+cp /path/to/agentic-sermon-review/commands/*.md ~/.claude/commands/
+```
+
+**Note:** Project-specific configurations in `.claude/` take precedence over global configurations in `~/.claude/`
+
+### Configuration Locations
+
+- **Project-specific**: `.claude/agents/` and `.claude/commands/` in your project directory
+- **Global**: `~/.claude/agents/` and `~/.claude/commands/` (available in all projects)
+
+Agent configurations are located in the `agents/` directory. Custom commands for workflow automation are in the `commands/` directory.
+
 ### Setting Up Docker MCP Toolkit (Optional)
 
 The `/review-transcript` command uses Obsidian MCP server by default to save analysis reports directly to your Obsidian vault. This requires Docker MCP Toolkit, which provides 200+ pre-built, containerized MCP servers with one-click deployment.
-
-**Why Docker MCP Toolkit?**
-
-Without containerization, setting up MCP servers means managing dependencies, credentials in config files, and different configurations per machine. Docker MCP Toolkit eliminates this friction with:
-
-- 200+ pre-built MCP servers in the catalog
-- One-click deployment through Docker Desktop
-- Secure credential management via OAuth or encrypted storage
-- Consistent configuration across Mac, Windows, and Linux
 
 **Prerequisites:**
 - [Docker Desktop 4.40 or later](https://www.docker.com/products/docker-desktop/)
@@ -252,51 +292,4 @@ If you prefer not to set up Docker MCP Toolkit, you can use the `--no-mcp` flag 
 - [MCP Documentation](https://code.claude.com/docs/en/mcp.md) - Model Context Protocol integration guide
 - [Docker MCP Toolkit Guide](https://www.docker.com/blog/add-mcp-servers-to-claude-code-with-mcp-toolkit/) - Official Docker guide for MCP setup
 
-## Getting Started
 
-### Using in This Project
-
-1. Clone this repository and navigate to the project directory
-2. Ensure Claude Code is installed and authenticated
-3. Start Claude Code:
-   ```bash
-   claude
-   ```
-4. The agents and commands are automatically available when running Claude Code from this directory
-
-### Copying to Other Projects
-
-To use these agents and commands in a different project:
-
-```bash
-# Navigate to your target project
-cd /path/to/your/project
-
-# Create .claude directory structure
-mkdir -p .claude/agents .claude/commands
-
-# Copy agents and commands
-cp /path/to/agentic-sermon-review/agents/*.md .claude/agents/
-cp /path/to/agentic-sermon-review/commands/*.md .claude/commands/
-```
-
-### Copying to Global Configuration
-
-To make these agents and commands available across all your projects:
-
-```bash
-# Copy agents to global configuration
-cp /path/to/agentic-sermon-review/agents/*.md ~/.claude/agents/
-
-# Copy commands to global configuration
-cp /path/to/agentic-sermon-review/commands/*.md ~/.claude/commands/
-```
-
-**Note:** Project-specific configurations in `.claude/` take precedence over global configurations in `~/.claude/`
-
-### Configuration Locations
-
-- **Project-specific**: `.claude/agents/` and `.claude/commands/` in your project directory
-- **Global**: `~/.claude/agents/` and `~/.claude/commands/` (available in all projects)
-
-Agent configurations are located in the `agents/` directory. Custom commands for workflow automation are in the `commands/` directory.
