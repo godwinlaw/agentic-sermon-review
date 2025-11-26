@@ -160,7 +160,6 @@ Claude Code requires authentication through one of these methods:
 
 - **Claude Console API** - Create an account at [console.anthropic.com](https://console.anthropic.com) (requires active billing)
 - **Claude Subscription** - Subscribe to Claude Pro or Max at [claude.ai](https://claude.ai)
-- **Enterprise Options** - Amazon Bedrock, Google Vertex AI, or Microsoft Foundry (see [Enterprise Authentication Guide](https://code.claude.com/docs/en/iam.md))
 
 ## Getting Started
 
