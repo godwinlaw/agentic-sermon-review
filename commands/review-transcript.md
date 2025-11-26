@@ -75,6 +75,14 @@ I'll perform a comprehensive analysis of the transcript using specialized agents
 
 ## Execution Plan
 
+**IMPORTANT - Execution Order**:
+1. Parse arguments (Step 1)
+2. Setup output location (Step 2)
+3. **Read the transcript FIRST** (Step 3)
+4. **Then** launch agents with the actual transcript content (Step 4)
+5. Generate executive summary (Step 5)
+6. Report completion (Step 6)
+
 ### Step 1: Parse Arguments
 
 **Check for help request first:**
@@ -229,13 +237,17 @@ All reports will be saved to local files using the Write tool:
 
 ### Step 3: Read Transcript
 
-Read the transcript file:
+First, read the transcript file using the Read tool to get its full content:
 
-@$1
+**Read the file**: Use `Read` tool with the path from `$1`
+
+**Store the content**: Save the complete transcript text to include in agent prompts
 
 ### Step 4: Launch Selected Agents in Parallel
 
 Launch **only the selected agents** in parallel using a single message with multiple Task tool calls.
+
+**CRITICAL**: Each agent prompt MUST include the complete transcript content that was read in Step 3. Do NOT use placeholder variables like `${FULL_TRANSCRIPT_CONTENT}`. Instead, embed the actual transcript text directly in the `<transcript>` section of each agent's prompt.
 
 Each agent receives mode-specific instructions with length-appropriate depth:
 
