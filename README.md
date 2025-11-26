@@ -44,7 +44,6 @@ When analyzing long transcripts, uploading them to chat applications like ChatGP
 - *Local agents approach*: Each of 12 agents gets a fresh context window → comprehensive multi-dimensional analysis
 
 **Learn more**: [Claude Code Agents Documentation](https://code.claude.com/docs/en/agents.md)
->>>>>>> df3c207 (Readme updates)
 
 ## Available Agents
 
