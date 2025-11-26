@@ -39,11 +39,7 @@ When analyzing long transcripts, uploading them to chat applications like ChatGP
 - **Specialized depth** - Each agent can deeply analyze one dimension (rhetoric, grammar, humor, theology) with full context awareness
 - **Comprehensive coverage** - Run 10+ specialized analyses on the same transcript, each with complete access to the full content
 
-**Example**: For a 15,000-word sermon transcript:
-- *Chat app approach*: Transcript uses ~80% of context → limited analysis depth
-- *Local agents approach*: Each of 12 agents gets a fresh context window → comprehensive multi-dimensional analysis
-
-**Learn more**: [Claude Code Agents Documentation](https://code.claude.com/docs/en/agents.md)
+**Learn more**: [Claude Code Subagents Documentation](https://code.claude.com/docs/en/sub-agents)
 
 ## Available Agents
 
