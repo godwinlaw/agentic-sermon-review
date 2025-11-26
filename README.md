@@ -1,6 +1,7 @@
 # Agentic Sermon Review
 
 An AI-powered tool for analyzing teaching scripts and sermon transcripts using specialized AI agents.
+<img width="801" height="499" alt="agentic-sermon-review" src="https://github.com/user-attachments/assets/4f0a6262-f54d-4284-b4f6-183fefe41ec2" />
 
 ## Overview
 
