@@ -127,79 +127,6 @@ Claude Code requires authentication through one of these methods:
 - **Claude Subscription** - Subscribe to Claude Pro or Max at [claude.ai](https://claude.ai)
 - **Enterprise Options** - Amazon Bedrock, Google Vertex AI, or Microsoft Foundry (see [Enterprise Authentication Guide](https://code.claude.com/docs/en/iam.md))
 
-### Setting Up Docker MCP Gateway (Optional)
-
-The `/review-transcript` command uses Obsidian MCP server by default to save analysis reports directly to your Obsidian vault. This requires the Docker MCP gateway.
-
-**Prerequisites:**
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
-- [Obsidian](https://obsidian.md/) installed with a vault created
-
-**Installation Steps:**
-
-1. **Install Docker MCP Gateway**
-
-   The Docker MCP gateway allows Claude Code to connect to MCP servers running in Docker containers.
-
-   ```bash
-   # Install the MCP Docker gateway globally
-   npx -y @anaisbetts/mcp-docker install
-   ```
-
-2. **Configure Obsidian MCP Server**
-
-   Add the Obsidian MCP server to your Claude Code configuration:
-
-   ```bash
-   # Add Obsidian MCP server
-   claude mcp add obsidian
-
-   # Configure the path to your Obsidian vault
-   claude mcp config obsidian vault_path "/path/to/your/obsidian/vault"
-   ```
-
-   Replace `/path/to/your/obsidian/vault` with the actual path to your Obsidian vault directory.
-
-3. **Add Additional MCP Servers (Optional)**
-
-   The review-transcript command can leverage additional research tools:
-
-   ```bash
-   # Add Wikipedia for fact-checking and research
-   claude mcp add wikipedia
-
-   # Add YouTube for transcript analysis
-   claude mcp add youtube
-
-   # Add web search capabilities
-   claude mcp add web-search
-   ```
-
-4. **Verify Setup**
-
-   Start Claude Code and verify MCP servers are connected:
-
-   ```bash
-   claude
-   ```
-
-   In the Claude Code session, type `/mcp` to see available MCP servers and their status.
-
-**Alternative: Use Local Output**
-
-If you prefer not to set up the Docker MCP gateway, you can use the `--no-mcp` flag with the `/review-transcript` command. This will save reports to a local `transcript-analysis/` directory instead:
-
-```bash
-/review-transcript sermon.md --no-mcp
-```
-
-### Official Documentation
-
-- [Setup Guide](https://code.claude.com/docs/en/setup.md) - Complete installation and configuration
-- [Authentication & IAM](https://code.claude.com/docs/en/iam.md) - Subscription vs. API access setup
-- [Quickstart Guide](https://code.claude.com/docs/en/quickstart.md) - Getting started with Claude Code
-- [MCP Documentation](https://code.claude.com/docs/en/mcp.md) - Model Context Protocol integration guide
-
 ## Getting Started
 
 ### Using in This Project
@@ -248,3 +175,121 @@ cp /path/to/agentic-sermon-review/commands/*.md ~/.claude/commands/
 - **Global**: `~/.claude/agents/` and `~/.claude/commands/` (available in all projects)
 
 Agent configurations are located in the `agents/` directory. Custom commands for workflow automation are in the `commands/` directory.
+
+### Setting Up Docker MCP Toolkit (Optional)
+
+The `/review-transcript` command uses Obsidian MCP server by default to save analysis reports directly to your Obsidian vault. This requires Docker MCP Toolkit, which provides 200+ pre-built, containerized MCP servers with one-click deployment.
+
+**Prerequisites:**
+- [Docker Desktop 4.40 or later](https://www.docker.com/products/docker-desktop/)
+- MCP Toolkit enabled in Docker Desktop
+- [Obsidian](https://obsidian.md/) installed with a vault created (for default output)
+
+**Step 1: Connect Claude Code to Docker MCP Toolkit**
+
+Choose one of the following methods:
+
+**Option 1: One-Click Connection (Recommended)**
+
+1. Open Docker Desktop
+2. Navigate to **MCP Toolkit** in the sidebar
+3. Click the **Clients** tab
+4. Find "Claude Code" in the list
+5. Click **Connect**
+
+Docker Desktop automatically configures the MCP Gateway connection.
+
+**Option 2: Manual Command Line Setup**
+
+If you prefer command-line setup or need project-specific configuration:
+
+```bash
+# Navigate to your project folder
+cd /path/to/your/project
+
+# Connect Claude Code to Docker MCP Toolkit
+docker mcp client connect claude-code
+```
+
+You'll see output confirming the connection:
+
+```
+=== Project-wide MCP Configurations ===
+● claude-code: connected
+    MCP_DOCKER: Docker MCP Catalog (gateway server) (stdio)
+```
+
+**What's happening under the hood?**
+
+The connection creates a `.mcp.json` file in your project:
+
+```json
+{
+  "mcpServers": {
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": ["mcp", "gateway", "run"],
+      "type": "stdio"
+    }
+  }
+}
+```
+
+**Step 2: Restart Claude Code**
+
+```bash
+# Exit Claude Code if running, then restart
+claude code
+```
+
+On first run, you'll see a prompt about the new MCP server. Choose **"Use this and all future MCP servers in this project"** to automatically use MCP servers enabled in Docker Desktop.
+
+**Step 3: Verify the Connection**
+
+Inside Claude Code, type `/mcp` to see available MCP servers. You should see the Docker MCP Gateway listed.
+
+**Step 4: Configure Obsidian MCP Server**
+
+In Docker Desktop → MCP Toolkit → Catalog:
+
+1. Search for "Obsidian"
+2. Click **+ Add**
+3. Go to the **Configuration** tab
+4. Configure your Obsidian vault path:
+   - `vault_path`: `/path/to/your/obsidian/vault`
+5. Click **Save**
+6. Click **Start Server**
+
+**Step 5: Add Additional MCP Servers (Optional)**
+
+The review-transcript command can leverage additional research tools:
+
+In Docker Desktop → MCP Toolkit → Catalog:
+
+- **Wikipedia** - For fact-checking and research
+- **YouTube** - For transcript analysis
+- **Web Search** - For web search capabilities
+
+For each server: Click **+ Add** → Configure if needed → **Start Server**
+
+**Verify Setup**
+
+In Claude Code, type `/mcp` again. You should now see your enabled MCP servers listed.
+
+**Alternative: Use Local Output**
+
+If you prefer not to set up Docker MCP Toolkit, you can use the `--no-mcp` flag with the `/review-transcript` command. This saves reports to a local `transcript-analysis/` directory instead:
+
+```bash
+/review-transcript sermon.md --no-mcp
+```
+
+### Official Documentation
+
+- [Setup Guide](https://code.claude.com/docs/en/setup.md) - Complete installation and configuration
+- [Authentication & IAM](https://code.claude.com/docs/en/iam.md) - Subscription vs. API access setup
+- [Quickstart Guide](https://code.claude.com/docs/en/quickstart.md) - Getting started with Claude Code
+- [MCP Documentation](https://code.claude.com/docs/en/mcp.md) - Model Context Protocol integration guide
+- [Docker MCP Toolkit Guide](https://www.docker.com/blog/add-mcp-servers-to-claude-code-with-mcp-toolkit/) - Official Docker guide for MCP setup
+
+
