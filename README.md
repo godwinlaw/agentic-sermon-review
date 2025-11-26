@@ -5,6 +5,7 @@ An AI-powered tool for analyzing teaching scripts and sermon transcripts using s
 ## Overview
 
 This project provides a comprehensive framework for reviewing and improving teaching content through multiple AI-powered analysis agents. Each agent specializes in a different aspect of communication analysis, providing detailed feedback on effectiveness, clarity, engagement, and theological accuracy.
+
 <img width="801" height="499" alt="agentic-sermon-review" src="https://github.com/user-attachments/assets/4f0a6262-f54d-4284-b4f6-183fefe41ec2" />
 
 ## Available Agents
